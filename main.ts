@@ -144,7 +144,7 @@ Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
   for await (const entry of iter) {
     ckv.delete(entry.key);
     count++;
-    if ( count < 10 ) keys.push(entry);
+    if ( count < 10 ) keys.push(entry.key);
   }
   console.log("Hourly reset keys deleted:", count, keys);
 });
