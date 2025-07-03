@@ -96,8 +96,6 @@ app.all('/dump/*', async (c) => {
     headers[key] = value
   }
 
-  console.log('Dump headers', headers);
-
   // Try to parse body as JSON, otherwise fallback to text
   let body: any = null
   try {
@@ -139,8 +137,6 @@ app.onError((err, c) => {
 });
 
 Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
-
-// Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
   const ckv = await Deno.openKv();
   const iter = await ckv.list({ prefix: [] });
   const keys = [];
