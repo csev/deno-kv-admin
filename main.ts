@@ -140,7 +140,7 @@ app.onError((err, c) => {
 
 // Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
 
-Deno.cron("Hourly DB Reset", "5 * * * *", () => {
+Deno.cron("Hourly DB Reset", "*/5 * * * *", () => {
   const iter = kv.list({ prefix: [] });
   const keys = [];
   var count = 0;
