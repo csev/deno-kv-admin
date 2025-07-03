@@ -138,9 +138,9 @@ app.onError((err, c) => {
   return c.text('Internal Server Error', 500);
 });
 
-// Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
+Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
 
-Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
+// Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
   const ckv = await Deno.openKv();
   const iter = await ckv.list({ prefix: [] });
   const keys = [];
@@ -148,9 +148,9 @@ Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
   for await (const entry of iter) {
     ckv.delete(entry.key);
     count++;
-    if ( count < 1000 ) keys.push(entry);
+    if ( count < 10 ) keys.push(entry);
   }
-  console.log("Hourly reset keys deleted:", count);
+  console.log("Hourly reset keys deleted:", count, keys);
 });
 
 Deno.serve(app.fetch);
