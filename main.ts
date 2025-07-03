@@ -140,12 +140,13 @@ app.onError((err, c) => {
 
 // Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
 
-Deno.cron("Hourly DB Reset", "*/5 * * * *", () => {
-  const iter = kv.list({ prefix: [] });
+Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
+  const ckv = await openKv();
+  const iter = await ckv.list({ prefix: [] });
   const keys = [];
   var count = 0;
-  for (const entry of iter) {
-    kv.delete(entry.key);
+  for await (const entry of iter) {
+    ckv.delete(entry.key);
     count++;
     if ( count < 1000 ) keys.push(entry);
   }
