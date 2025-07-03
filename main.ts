@@ -138,11 +138,13 @@ app.onError((err, c) => {
   return c.text('Internal Server Error', 500);
 });
 
-Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
+// Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
+
+Deno.cron("Hourly DB Reset", "5 * * * *", () => {
   const iter = kv.list({ prefix: [] });
   const keys = [];
   var count = 0;
-  for await (const entry of iter) {
+  for (const entry of iter) {
     kv.delete(entry.key);
     count++;
     if ( count < 1000 ) keys.push(entry);
