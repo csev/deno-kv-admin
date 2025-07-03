@@ -141,7 +141,7 @@ app.onError((err, c) => {
 // Deno.cron("Hourly DB Reset", "0 */2 * * *", () => {
 
 Deno.cron("Hourly DB Reset", "*/5 * * * *", async () => {
-  const ckv = await openKv();
+  const ckv = await Deno.openKv();
   const iter = await ckv.list({ prefix: [] });
   const keys = [];
   var count = 0;
