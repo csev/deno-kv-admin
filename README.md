@@ -96,3 +96,77 @@ Everybody course you may already have a folder and a `hidden.py` with your secre
 https://www.pg4e.com/code/kvadmin.py
 
 https://www.pg4e.com/code/hidden-dist.py
+
+If yuo don't already have a `hidden.py`, copy `hidden-dist.py` to `hidden.py` and edit the `deno()` function
+to set your host name and token value:
+
+    def denokv():
+        return { 'token' : '99123',
+             "url": "https://comfortable-starling-12.deno.dev" }
+
+Then navigate into the folder using terminal, command line, or a shell and run `python kvadmin.py` or 
+`python3 kvadmin.py`.  You might see the following:
+
+    python kvadmin.py 
+    Verifying connection to https://comfortable-starling-12.deno.dev/dump
+    
+    Unable to communicate with Deno.  Sometimes it takes a while to start the
+    the Deno instance after it has been idle.  You might want to access the url
+    below in a browser, wait 30 seconds, and then restart kvadmin.
+    
+    https://comfortable-starling-12.deno.dev/dump
+
+This checks if your `denokv()` is correct and being read.  Sometimes if your Deno application 
+has been idle for a while it can take up to 30 seconds to cold start your application.  If you pay
+for your deployment or if the application is not idle - startup is very quick.
+
+Hope
+
+    MacBook-Pro-713:code csev$ python kvadmin.py 
+    Verifying connection to https://kv-admin-api.pg4e.com/dump
+    
+    Enter command: samples
+    
+    {"author": "Bill", "title": "Hamlet", "isbn": "42", "lang": "ang"}
+    {"author": "Katie", "title": "Wizards", "isbn": "6848", "lang": "en"}
+    {"author": "Chuck", "title": "PY4E", "isbn": "8513", "lang": "en"}
+    {"author": "Kristen", "title": "PI", "isbn": "8162", "lang": "en"}
+    {"author": "James", "title": "Wisdom", "isbn": "3857", "lang": "en"}
+    {"author": "Barb", "title": "Mind", "isbn": "8110", "lang": "en"}
+    {"author": "Vittore", "title": "Tutti", "isbn": "1730", "lang": "es"}
+    {"author": "Chuck", "title": "Net", "isbn": "8151", "lang": "en"}
+    
+    
+    Enter command: set /books/Hamlet 
+    Enter json (finish with a blank line:
+    {"author": "Bill", "title": "Hamlet", "isbn": "42", "lang": "ang"}
+    
+    https://kv-admin-api.pg4e.com/kv/set/books/Hamlet?token=42
+    {
+      "ok": true,
+      "versionstamp": "010000000591ef100000"
+    }
+    
+    Enter command: list /books
+    https://kv-admin-api.pg4e.com/kv/list/books?token=42
+    200
+    {
+        "records": [
+            {
+                "key": [
+                    "books",
+                    "Hamlet"
+                ],
+                "value": {
+                    "author": "Bill",
+                    "title": "Hamlet",
+                    "isbn": "42",
+                    "lang": "ang"
+                },
+                "versionstamp": "010000000591ef100000"
+            }
+        ],
+        "cursor": ""
+    }
+    
+    Enter command: quit
