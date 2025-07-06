@@ -118,24 +118,26 @@ Then navigate into the folder using terminal, command line, or a shell and run `
 
 This checks if your `denokv()` is correct and being read.  Sometimes if your Deno application 
 has been idle for a while it can take up to 30 seconds to cold start your application.  If you pay
-for your deployment or if the application is not idle - startup is very quick.
+for your Deno deployment or if the application is not idle - startup is very quick.
 
-Hope
+After about 30 seconds, you should start `kvadmin.py` and get the `Enter Command:` prompt. The following
+are the `kvadmin.py` commands and a few sample commands:
 
-    MacBook-Pro-713:code csev$ python kvadmin.py 
+    $ python kvadmin.py 
     Verifying connection to https://kv-admin-api.pg4e.com/dump
-    
+
+    Enter Command: help
+      quit
+      samples
+      set /books/Hamlet
+      get /books/Hamlet
+      list /books
+      delete /books/Hamlet
+      delete_prefix /books
+
     Enter command: samples
     
     {"author": "Bill", "title": "Hamlet", "isbn": "42", "lang": "ang"}
-    {"author": "Katie", "title": "Wizards", "isbn": "6848", "lang": "en"}
-    {"author": "Chuck", "title": "PY4E", "isbn": "8513", "lang": "en"}
-    {"author": "Kristen", "title": "PI", "isbn": "8162", "lang": "en"}
-    {"author": "James", "title": "Wisdom", "isbn": "3857", "lang": "en"}
-    {"author": "Barb", "title": "Mind", "isbn": "8110", "lang": "en"}
-    {"author": "Vittore", "title": "Tutti", "isbn": "1730", "lang": "es"}
-    {"author": "Chuck", "title": "Net", "isbn": "8151", "lang": "en"}
-    
     
     Enter command: set /books/Hamlet 
     Enter json (finish with a blank line:
@@ -170,3 +172,7 @@ Hope
     }
     
     Enter command: quit
+
+If the auto grader tells you to change your `token` value, make sure to change it both on your
+Deploy Playground instance and do a `Save and Deploy` and then also chabge your `hidden.py` so
+that your `kvadmin.py` continues to work.
