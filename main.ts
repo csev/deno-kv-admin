@@ -132,7 +132,6 @@ app.onError((err, c) => {
 function checkToken(c) {
   const token = c.req.query("token");
   if ( token == '42' ) return true;
-  
   throw new HTTPException(401, { message: 'Missing or invalid token' }); 
 }
 
