@@ -1,7 +1,10 @@
 # deno-kv-admin
 
-This is a set of web service endpoints to support `kvadmin.py` in the Deno modult
+This is a set of web service endpoints to support  [kvadmin.py](https://www.pg4e.com/code/kvadmin.py) in
+the [Deno](https://docs.deno.com/deploy/kv/manual/) module
 of PostgreSQL for Everybody (www.pg4e.com)
+
+It is designed to be installed in a developer account on [Deno Deploy](https://dash.deno.com).
 
 # Installation Instructions
 
@@ -10,14 +13,14 @@ Deno Deploy dashboard, go to:
 
 https://dash.deno.com/
 
-At the `Overview` section, create a `New Playground`.  Copy the contents of this Deno
-application:
+At the `Overview` section, create a `New Playground`.  Copy the contents of this file into the new
+Deno Playgrund application:
 
 https://github.com/csev/deno-kv-admin/blob/main/main.ts
 
-And paste it into the code panel of your new Deno playground.  Before you `Save and Deploy`,
+Paste it into the code panel of your  Deno playground.  Before you `Save and Deploy`,
 scroll to the bottom and delete the `Deno.cron()` method so your data does not get wiped out
-every hour.  Or you could change the CRON string to sowthing like ""0 0 1 * *" to reset your
+every hour.  Or you could change the CRON string to something like ""0 0 1 * *" to clear your
 data once per month.
 
 Also note the `checkToken()` code near the end.  The autograder will ask you to change the token
@@ -90,14 +93,14 @@ We have built a simple Python client for this server that allows you to execute 
 like `set`, `get`, `list`, or `delete` from the command line on your computer.  This is a very simplistic
 equivalent of the `psql` command line client for PostgreSQL.
 
-Download the following files to a fiolder on your computer.  If you you have been taking the PostgreSql for
+Download the following files to a folder on your computer.  If you you have been taking the PostgreSql for
 Everybody course you may already have a folder and a `hidden.py` with your secrets.
 
 https://www.pg4e.com/code/kvadmin.py
 
 https://www.pg4e.com/code/hidden-dist.py
 
-If yuo don't already have a `hidden.py`, copy `hidden-dist.py` to `hidden.py` and edit the `deno()` function
+If you don't already have a `hidden.py`, copy `hidden-dist.py` to `hidden.py` and edit the `deno()` function
 to set your host name and token value:
 
     def denokv():
@@ -116,7 +119,7 @@ Then navigate into the folder using terminal, command line, or a shell and run `
     
     https://comfortable-starling-12.deno.dev/dump
 
-This checks if your `denokv()` is correct and being read.  Sometimes if your Deno application 
+This checks if your `denokv()` values are correct and being read.  Sometimes if your Deno application 
 has been idle for a while it can take up to 30 seconds to cold start your application.  If you pay
 for your Deno deployment or if the application is not idle - startup is very quick.
 
@@ -173,6 +176,6 @@ are the `kvadmin.py` commands and a few sample commands:
     
     Enter command: quit
 
-If the auto grader tells you to change your `token` value, make sure to change it both on your
-Deploy Playground instance and do a `Save and Deploy` and then also chabge your `hidden.py` so
+If the auto grader tells you to change your `token` value, make sure to change it on your
+Deploy Playground instance and do a `Save and Deploy` and then also change your `hidden.py` so
 that your `kvadmin.py` continues to work.
