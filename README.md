@@ -14,11 +14,11 @@ Deno Deploy dashboard, go to:
 https://dash.deno.com/
 
 At the `Overview` section, create a `New Playground`.  Copy the contents of this file into the new
-Deno Playgrund application:
+Deno Playground application:
 
 https://github.com/csev/deno-kv-admin/blob/main/main.ts
 
-Paste it into the code panel of your  Deno playground.  Before you `Save and Deploy`,
+Paste it into the code panel of your Deno playground.  Before you `Save and Deploy`,
 scroll to the bottom and delete the `Deno.cron()` method so your data does not get wiped out
 every hour.  Or you could change the CRON string to something like ""0 0 1 * *" to clear your
 data once per month.
