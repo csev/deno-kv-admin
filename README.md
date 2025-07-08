@@ -29,7 +29,7 @@ to a particular value in order to submit your assignments for evaluation and cre
 Once you have removed the CRON entry, you can `Save and Deploy`. It can take 30 seconds to get your code
 deployed to the Deno Deploy cloud.  Check the logs to make sure you did not introduce a syntax error.
 
-Once it is up you will get a URL to access your appilication like:
+Once it is up you will get a URL to access your application like:
 
 https://comfortable-starling-12.deno.dev
 
@@ -80,7 +80,7 @@ If it works and you have no books the output will look as follows:
       "cursor": ""
     }
 
-Which means "no orecords exist with prefix of books".  If your token is wrong you should get a
+Which means "no records exist with prefix of books".  If your token is wrong you should get a
 `401` response code and a message of
 
     Missing or invalid token
