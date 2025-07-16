@@ -142,7 +142,7 @@ Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
   const ckv = await Deno.openKv();
   const iter = await ckv.list({ prefix: [] });
   const keys = [];
-  var count = 0;
+  let count = 0;
   for await (const entry of iter) {
     ckv.delete(entry.key);
     count++;
