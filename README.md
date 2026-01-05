@@ -4,14 +4,14 @@ This is a set of web service endpoints to support  [kvadmin.py](https://www.pg4e
 the [Deno](https://docs.deno.com/deploy/kv/manual/) module
 of PostgreSQL for Everybody (www.pg4e.com)
 
-It is designed to be installed in a developer account on [Deno Deploy](https://dash.deno.com).
+It is designed to be installed in a developer account on [Deno Deploy](https://console.deno.com).
 
 # Installation Instructions
 
 You will need a github account to use Deno Deploy. To create or access your
 Deno Deploy dashboard, go to:
 
-https://dash.deno.com/
+https://deno.com/deploy
 
 At the `Overview` section, create a `New Playground`.  Copy the contents of this file into the new
 Deno Playground application:
