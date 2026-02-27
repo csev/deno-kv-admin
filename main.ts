@@ -131,14 +131,14 @@ app.onError((err, c) => {
 // Insure security - The autograder will have you change this value
 function checkToken(c) {
   const token = c.req.query("token");
-  if ( token == '42' ) return true;
+  if ( token == '2605_dcedf0:3ba471' ) return true;
   throw new HTTPException(401, { message: 'Missing or invalid token' }); 
 }
 
 // If you are putting up your own server you can either delete this
 // CRON entry or change it to be once per month with "0 0 1 * *" as
 // the CRON string
-Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
+// Deno.cron("Hourly DB Reset", "0 * * * *", async () => {
   const ckv = await Deno.openKv();
   const iter = await ckv.list({ prefix: [] });
   const keys = [];
