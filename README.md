@@ -4,16 +4,17 @@ This is a set of web service endpoints to support  [kvadmin.py](https://www.pg4e
 the [Deno](https://docs.deno.com/deploy/kv/manual/) module
 of PostgreSQL for Everybody (www.pg4e.com)
 
-It is designed to be installed in a developer account on [Deno Deploy](https://dash.deno.com).
+It is designed to be installed in a developer account on [Deno Deploy](https://console.deno.com).
 
 # Installation Instructions
 
 You will need a github account to use Deno Deploy. To create or access your
-Deno Deploy dashboard, go to:
+Deno Depoy dashboard, go to:
 
-https://dash.deno.com/
+https://console.deno.com
 
-At the `Overview` section, create a `New Playground`.  Copy the contents of this file into the new
+### 1. Create the Application
+At the `Applications` section, create a `New Playground`.  Copy the contents of this file into the new
 Deno Playground application:
 
 https://github.com/csev/deno-kv-admin/blob/main/main.ts
@@ -23,17 +24,22 @@ scroll to the bottom and delete the `Deno.cron()` method so your data does not g
 every hour.  Or you could change the CRON string to something like ""0 0 1 * *" to clear your
 data once per month.
 
-Also note the `checkToken()` code near the end.  The autograder will ask you to change the token
-to a particular value in order to submit your assignments for evaluation and credit.
+### 2. Deploy and Set Token
+Note the `checkToken()` code near the end of the script. The autograder will ask you to change the token to a particular value in order to submit your assignments for evaluation and credit.
 
-Once you have removed the CRON entry, you can `Save and Deploy`. It can take 30 seconds to get your code
-deployed to the Deno Deploy cloud.  Check the logs to make sure you did not introduce a syntax error.
+### 3. Provision and Link the Database (CRITICAL)
+In the current Deno Deploy layout, your application defaults to an **ephemeral** (temporary) database. To ensure your data persists after the application goes idle, you must manually link a managed database instance.
 
-Once it is up you will get a URL to access your application like:
+1.  From the top navigation bar in the Deno dashboard, click on the **Databases** tab.
+2.  Click the **+ Provision database** button. 
+3.  Choose **Deno KV** as the engine, give it a name (e.g., `my-database`), and click **Provision**.
+4.  Once the database status is **Unassigned**, click the **Assign** button.
+5.  Select your Playground/App from the list to link the database to your code. 
+6.  Verify that your app name now appears under the **Assignments** column for that database and status is now **Connected**.
 
-https://comfortable-starling-12.deno.dev
+Once you have linked the database and removed/updated the CRON entry, click `Save and Deploy`. It can take 30 seconds to get your code deployed to the Deno Deploy cloud. Check the logs to make sure you did not introduce a syntax error.
 
-If you access this URL, you will (correctly) get a `404 Not Found`.  
+Once it is up, you will get a URL like: `https://comfortable-starling-12.deno.dev` (url might have '*.deno.net' ending instead, that shouldn't be a problem)
 
 # Initial testing
 
